@@ -1,3 +1,4 @@
+//ts-nocheck
 import React, { useEffect, useState } from 'react';
 import {
   SocketProvider,
@@ -19,7 +20,7 @@ function App() {
 
   const [isOpen,setOpen] = useState(false);
   const [color,setColor] = useState('white');
-  const reducer = (state, action) => {
+  const reducer = (state:any, action:any) => {
     console.log(action)
     if(action?.payload){
       setColor(action.payload.color);
@@ -31,17 +32,14 @@ function App() {
     uri="http://localhost:555"
     initialState={{color:'NONE'}}> 
       <div className="App">
-        <header className="App-header">
-          <p style={{backgroundColor:color}}>
-             <span className="thermometer">80&deg;C</span>
-          </p>
-          <input type="checkbox" checked={isOpen} onChange={()=>setOpen(!isOpen)} />
-          {isOpen&&
-            <SubWindow onClose={()=>setOpen(false)} title="subwindow">
-              <div>You can put anything here!</div>
-            </SubWindow>
-          }
-        </header>
+        <div style={{
+          position: 'absolute',
+          right: 100,
+          top: 200
+        }}>
+            <span className="thermometer"></span>
+        </div>
+          
       </div>
       </SocketProvider>
   );
