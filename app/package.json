@@ -17,8 +17,11 @@
     "react-dom": "^16.13.1",
     "react-portal-popout": "^1.9.1",
     "react-scripts": "3.4.1",
+    "react-socket-io-hooks": "^1.1.0",
     "serialport": "^9.0.0",
-    "typescript": "^3.7.5"
+    "socket.io": "^2.3.0",
+    "typescript": "^3.7.5",
+    "use-socketio": "^2.0.3"
   },
   "homepage": "./",
   "main": "main.js",

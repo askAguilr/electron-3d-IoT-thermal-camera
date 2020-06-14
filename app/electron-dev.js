@@ -12,9 +12,13 @@ const tryConnection = () => client.connect({port: port}, () => {
             console.log('starting electron');
             startedElectron = true;
             const exec = require('child_process').exec;
-            exec('npm run electron').stdout.on("data", (data) => {
+            const electronProcess = exec('npm run electron').stdout.on("data", (data) => {
                 console.log("Electron says:"+data);
             });
+            const arduinoProcess = exec('node usb-server').stdout.on("data", (data) => {
+                console.log("Arduino says:"+data);
+            });
+            electronProcess.on("close",()=>process.exit(0));
         }
 
         
